@@ -1,0 +1,27 @@
+To increase EBS volume
+
+Step 1: Modify Volume in AWS Console
+  Go to EC2 > Volumes (left sidebar under "Elastic Block Store").
+  Find the volume attached to your instance (check instance ID).
+  Select it → Actions > Modify Volume
+  Set size to 24 GiB → Modify → Confirm.
+  AWS will start the modification (takes a few seconds to minutes).
+
+Step 2: Resize Filesystem on EC2
+  SSH into your instance, then run:
+    lsblk
+
+    Find your device name (likely /dev/xvda1 or /dev/nvme0n1p1 depending on AMI type). Now extend the filesystem:
+
+  Ubuntu (ext4 default):
+    sudo growpart /dev/xvda 1
+    sudo resize2fs /dev/xvda1
+
+  Ubuntu (if using nvme):
+    sudo growpart /dev/nvme0n1 1
+    sudo resize2fs /dev/nvme0n1p1
+
+Step 3: Verify
+  df -h
+
+
