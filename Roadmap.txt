@@ -1,0 +1,60 @@
+🌐 Core Compute & Networking
+  1) EC2 (Elastic Compute Cloud): Virtual servers, AMIs, instance types, autoscaling.
+  2) Elastic Load Balancer (ELB): Distributing traffic across instances.
+  3) VPC (Virtual Private Cloud): Subnets, routing tables, NAT gateways, peering, security groups.
+  4) Route 53: DNS, domain registration, routing policies.
+  5) ECS / EKS / Fargate: Container orchestration and serverless containers.
+  6) Lambda: Serverless compute functions with triggers.
+
+
+🗄️ Storage & Databases
+  1) S3 (Simple Storage Service): Buckets, lifecycle policies, static site hosting.
+  2) EBS (Elastic Block Store): Block storage for EC2.
+  3) EFS (Elastic File System): Scalable file storage.
+  4) RDS (Relational Database Service): Managed SQL databases.
+  5) DynamoDB: NoSQL key-value store.
+  6) Aurora: High-performance managed relational DB.
+
+
+🚀 CI/CD & DevOps
+  1) ECR (Elastic Container Registry): Container image storage.
+  2) CodePipeline / CodeBuild / CodeDeploy: CI/CD automation.
+  3) CloudFormation / CDK (Cloud Development Kit): Infrastructure as code.
+  4) Elastic Beanstalk: Easy app deployment service.
+  5) App Runner: Simplified container app deployment.
+
+
+🔒 Security, IAM & Monitoring
+  1) IAM (Identity and Access Management): Roles, policies, MFA, least-privilege access.
+  2) KMS (Key Management Service): Encryption keys.
+  3) Secrets Manager / Parameter Store: Secure configuration management.
+  4) CloudWatch: Metrics, logs, alarms.
+  5) CloudTrail: API activity auditing.
+  6) GuardDuty / Security Hub: Threat detection and monitoring.
+
+
+📡 Messaging & Integration
+  1) SQS (Simple Queue Service): Message queues.
+  2) SNS (Simple Notification Service): Pub/Sub messaging.
+  3) EventBridge: Event-driven architecture.
+  4) Step Functions: Serverless workflows.
+
+
+☁️ Hybrid & Advanced Services
+  1) API Gateway: Expose REST/WebSocket APIs.
+  2) Global Accelerator / CloudFront (CDN): Low-latency global delivery.
+  3) Systems Manager (SSM): Patching, automation, parameter store.
+  4) EKS (Elastic Kubernetes Service): Managed Kubernetes clusters.
+
+
+🛠️ Extras (Good-to-Know)
+  1) CloudShell & AWS CLI: Command-line automation.
+  2) AWS Organizations & Control Tower: Multi-account governance.
+  3) Cost Explorer / Trusted Advisor: Cost optimization and best practices.
+  4) Athena / Glue: Serverless data querying and ETL.
+
+👉 In short:
+  1) Compute + Networking (EC2, VPC, ELB, ECS/EKS, Lambda)
+  2) Storage + Databases (S3, EBS, RDS, DynamoDB)
+  3) Security (IAM, KMS, CloudWatch, CloudTrail)
+  4) CI/CD + IaC (ECR, CodePipeline, CloudFormation, CDK)
