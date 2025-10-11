@@ -1,0 +1,55 @@
+🧱 1. Repository Organization
+  ✅ Use environment-based repositories – e.g.,
+    appname/dev, appname/staging, appname/prod
+  ✅ Use microservice-based repos – e.g.,
+    moviu-api, kaay-frontend, auth-service
+  🚫 Avoid generic names like test, repo1, or default.
+
+
+🔐 2. Access Control (IAM & Permissions)
+  ✅ Use IAM roles and policies for granular access control.
+    Example: Allow push only for CI/CD roles, pull for ECS/EKS services.
+  ✅ Avoid using root credentials for authentication.
+  ✅ Use temporary credentials via AWS STS or ECR login with get-login-password.
+
+
+🧩 3. Image Tagging Strategy
+  ✅ Always use semantic or descriptive tags:
+    v1.0.0, v1.0.1, staging-2025-10-11, commit-<sha>
+  ✅ Also keep a latest tag for convenience but don’t depend solely on it.
+  🚫 Avoid overwriting tags (can cause version confusion in deployments).
+
+
+🧼 4. Lifecycle Policies
+  ✅ Configure lifecycle rules to automatically delete old/unreferenced images.
+    Example: Keep only the last 10 versions or last 30 days.
+  ✅ Helps save costs and keep the registry clean.
+
+🔒 5. Image Security Scanning
+  ✅ Enable ECR image scan on push to detect vulnerabilities (CVE, etc.).
+  ✅ Regularly review scan reports and fix base image issues.
+  ✅ Integrate security checks in your CI/CD pipeline.
+
+🚀 6. CI/CD Integration
+  ✅ Automate docker build, tag, and push with GitHub Actions / CodePipeline.
+  ✅ Use build metadata in tags:
+    Example: app:v1.2.3-<commit-hash>-<build-number>
+  ✅ Automate cleanup and deploy from ECR to ECS/EKS/App Runner.
+
+🌍 7. Cross-Region & Cross-Account Access
+  ✅ Use ECR replication for multi-region deployments (for faster pull & HA).
+  ✅ For multi-account setups, use ECR cross-account policies.
+
+📊 8. Monitoring & Cost Management
+  ✅ Enable CloudWatch metrics for ECR: image count, pull/push count, storage size.
+  ✅ Use AWS Trusted Advisor or Cost Explorer to optimize storage.
+  ✅ Delete unused repos periodically.
+
+🧱 9. Base Image Management
+  ✅ Use trusted base images (e.g., node:18-alpine, python:3.11-slim).
+  ✅ Keep base images updated regularly to patch vulnerabilities.
+
+🧰 10. Performance Optimization
+  ✅ Prefer smaller images (alpine, multi-stage builds).
+  ✅ Compress build context and .dockerignore unnecessary files.
+  ✅ Use ECR caching for CI builds to reduce build times.
