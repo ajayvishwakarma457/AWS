@@ -1,0 +1,98 @@
+Aws Dynamodb provide me the key pointer which are best industry practice
+  Here’s a professional, industry-level summary of AWS DynamoDB best practices — exactly how leading companies (Netflix, Airbnb, Amazon itself) design and operate it 👇
+
+🧠 1️⃣ Table Design & Data Modeling
+  Design for access patterns, not relations.
+  DynamoDB is NoSQL, so start from your query requirements before modeling tables.
+  Use single-table design when possible — store related entities in one table using composite keys.
+  Define a clear partition key and sort key to ensure even data distribution.
+  Avoid hot partitions — pick partition keys that spread traffic evenly (avoid timestamps or static values).
+  Use Global Secondary Indexes (GSI) and Local Secondary Indexes (LSI) wisely for flexible querying.
+  Denormalize data (duplicate small attributes) to improve read performance.
+  Prefer sparse indexes — only index the items that need it.
+  💡 Think access-first, not schema-first.
+
+⚙️ 2️⃣ Performance Optimization
+  Use provisioned capacity with auto scaling to balance performance and cost.
+  Enable adaptive capacity (default) — DynamoDB automatically balances partitions.
+  Batch writes/reads to minimize round-trips and throttling.
+  Use DynamoDB Accelerator (DAX) for microsecond-level response caching.
+  Prefer Query over Scan — scans read entire tables and are expensive.
+  Use pagination with LastEvaluatedKey to fetch large datasets efficiently.
+  Monitor ConsumedReadCapacityUnits and ConsumedWriteCapacityUnits in CloudWatch to detect throttling.
+  💡 Optimize for access patterns, not general-purpose queries.
+
+🔒 3️⃣ Security
+  Encrypt data at rest using AWS KMS (default).
+  Use IAM policies for fine-grained access control — restrict who can access specific tables and actions.
+  Enable encryption in transit using HTTPS endpoints.
+  Use VPC endpoints (DynamoDB Gateway or Interface endpoints) for private communication within AWS.
+  Store credentials and config in AWS Secrets Manager or Parameter Store.
+  Enable streams encryption for DynamoDB Streams (if used).
+  💡 Apply least privilege IAM policies and always use private connectivity where possible.
+
+💾 4️⃣ Backup & Recovery
+  Enable point-in-time recovery (PITR) to recover to any second in the last 35 days.
+  Use on-demand backups before major changes or deployments.
+  Test restoring backups regularly to ensure data integrity.
+  Tag backups to automate retention and cost tracking.
+  Use AWS Backup service to centralize backup management.
+  💡 Backups are automated, but recovery must be tested.
+
+📊 5️⃣ Monitoring & Observability
+  Use Amazon CloudWatch for key metrics:
+    ThrottledRequests
+    ConsumedReadCapacityUnits / ConsumedWriteCapacityUnits
+    SystemErrors
+    ReadThrottleEvents / WriteThrottleEvents
+  Enable DynamoDB Streams for real-time change tracking (integrate with Lambda or Kinesis).
+  Enable CloudTrail to log all API actions (for audit & compliance).
+  Set alarms for throttling, high latency, or reaching capacity limits.
+  Use Contributor Insights to identify the most accessed keys or partitions.
+  💡 Continuous monitoring is essential for scaling and performance health.
+
+
+🧩 6️⃣ Scalability & Availability
+  Leverage On-Demand mode for unpredictable workloads — pay per request, no need to manage capacity.
+  Use Global Tables for multi-region active-active replication.
+  Use Streams + Lambda for event-driven architectures (e.g., audit logs, triggers).
+  Partition keys strategically — high cardinality ensures even scaling.
+  Leverage TTL (Time-to-Live) for automatic expiration of old data.
+  💡 DynamoDB scales horizontally — design your keys and access patterns accordingly.
+
+💸 7️⃣ Cost Optimization
+  Use On-Demand for spiky workloads, Provisioned + Auto Scaling for steady traffic.
+  Use DAX caching to reduce read capacity cost.
+  Use Batch APIs (BatchWriteItem, BatchGetItem) to minimize network calls.
+  Remove unused GSIs — they cost extra storage and write throughput.
+  Monitor CloudWatch “Consumed” vs “Provisioned” capacity to adjust scaling policies.
+  Delete expired items via TTL to free up space automatically.
+  Use AWS Cost Explorer + Tags to monitor DynamoDB-related costs.
+  💡 Tune capacity modes and indexes frequently to align cost with usage.
+
+🧰 8️⃣ Maintenance & Operations
+  Use Infrastructure as Code (CloudFormation, Terraform) for repeatable table setups.
+  Use version control for table schemas and index configurations.
+  Enable deletion protection for critical tables.
+  Test failovers and backups periodically.
+  Rotate IAM roles and credentials on schedule.
+  Regularly review and clean up old Streams, GSIs, and unused items.
+  💡 Treat DynamoDB as code — automate and test all changes.
+
+🚀 9️⃣ Integration Best Practices
+  | Integration              | Best Practice                                      |
+  | ------------------------ | -------------------------------------------------- |
+  | **Lambda**               | Use Streams to trigger serverless processing.      |
+  | **Kinesis**              | Stream DynamoDB changes for analytics pipelines.   |
+  | **S3**                   | Export table data to S3 for archival or analytics. |
+  | **Athena**               | Query DynamoDB data exported to S3.                |
+  | **Glue / Data Pipeline** | For ETL and batch analytics workloads.             |
+
+🧠 TL;DR — DynamoDB Golden Rules (Industry Level)
+  Design tables around access patterns, not entities.
+  Keep tables private and encrypted (KMS + IAM).
+  Use Query > Scan; avoid hot partitions.
+  Enable PITR + backups; test restores.
+  Monitor capacity, throttles, and latency in CloudWatch.
+  Use DAX caching and auto scaling for performance and cost control.
+  Automate deployment and use tags for governance.
