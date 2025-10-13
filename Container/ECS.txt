@@ -3,8 +3,6 @@ AWS lightsail provide me the key pointer which are best industry practice
 Here are the best industry-standard practices and key pointers when working with AWS Lightsail — especially 
 if you’re using it for small- to medium-scale applications, staging, or early-stage production before scaling up to EC2 or ECS.
 
-
-
 🧱 1. Architecture & Design
   Use Fargate for serverless compute (no EC2 management, auto-scaling built-in).
   Prefer ECS on EC2 for cost control or custom networking (when you need GPU, EBS, or advanced configuration).
@@ -13,14 +11,11 @@ if you’re using it for small- to medium-scale applications, staging, or early-
   Use AWS Application Load Balancer (ALB) to route traffic to ECS services.
   Define clear service boundaries — one service per container image ideally.
 
-
-
 ⚙️ 2. Compute Instance Practices
   Choose the right blueprint (e.g., Ubuntu + Node.js, WordPress, etc.) instead of building from scratch every time.
   Use static IPs for all public-facing instances — ensures DNS consistency after restarts.
   Enable automatic snapshots daily or weekly to protect against data loss.
   Use SSH Key Pairs securely — generate locally and never expose private keys.
-
 
 🧰 3. Networking & Security
   Use Lightsail Networking tab to configure:
@@ -50,7 +45,6 @@ if you’re using it for small- to medium-scale applications, staging, or early-
   Automate patching: run OS updates periodically or use scripts (cron jobs).
   Use snapshots before making critical changes (deployment, upgrade).
 
-
 🧾 7. Cost & Optimization
   Use predictable monthly plans (Lightsail bundles) — includes instance, bandwidth, static IP, DNS.
   Monitor bandwidth usage — plan has a cap; beyond that, extra data is billed.
@@ -67,7 +61,6 @@ if you’re using it for small- to medium-scale applications, staging, or early-
   ✅ Rotate access keys regularly.
   ✅ Enable HTTPS + automatic renewal.
   ✅ Enable CloudWatch alarms for CPU spikes or failures.
-
 
 🧭 10. Typical Industry Use Cases
   | Use Case                              | Lightsail Advantage                    |
