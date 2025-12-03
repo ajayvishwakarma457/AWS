@@ -1,0 +1,79 @@
+1. Core AWS Services (Deep Level)
+
+  Compute
+    . EC2 (networking, storage, AMIs, autoscaling, spot)
+    . ECS, EKS (full production deployments)
+    . Lambda (event-driven design, cold start tuning)
+
+  Networking
+    . VPC design (CIDR planning, multi-VPC)
+    . IGW, NAT, Transit Gateway
+    . PrivateLink, VPC Peering
+    . Hybrid connectivity (VPN, Direct Connect)
+    . Route 53 (routing policies, failover, latency, geoprox)
+
+  Storage
+    . S3 (versioning, lifecycle, replication, encryption)
+    . EBS, EFS, FSx
+    . Data durability and performance tuning
+
+2. Security & Identity
+  . IAM (least privilege design, SCPs, permission boundaries)
+  . KMS (key policies, envelope encryption)
+  . Secrets Manager vs Parameter Store
+  . CloudTrail, Config, GuardDuty, Security Hub
+  . WAF + Shield advanced configurations
+  . Multi-account security architecture (Control Tower)
+
+3. Automation & IaC
+  . Terraform (preferred in industry)
+  . CloudFormation (advanced templates, modules, stacks)
+  . CI/CD (CodePipeline, GitHub Actions, GitLab CI)
+  . Automated deployments (blue/green, canary)
+
+4. Containers & Orchestration
+  . EKS (cluster networking, IRSA, node groups, addons)
+  . ECS/Fargate deployments
+  . Service mesh basics (App Mesh, Envoy)
+  . Container security and observability
+
+5. Monitoring & Observability
+ . CloudWatch (logs, metrics, alarms)
+ . Distributed tracing (X-Ray, OpenTelemetry)
+ . Centralized logging (Kinesis → S3 → Athena)
+ . Performance troubleshooting
+
+6. Databases
+  . RDS (backups, failover, parameter groups)
+  . DynamoDB (indexes, TTL, streams, capacity planning)
+  . Aurora (serverless v2, replicas, autoscaling)
+  . ElastiCache (Redis clusters/sharding)
+
+7. Scaling, Availability, Resilience
+  . Multi-AZ and Multi-Region architecture
+  . Disaster recovery patterns:
+    . Backup & Restore
+    . Pilot Light
+    . Warm Standby
+    . Multi-region active-active
+  . Load balancing (ALB, NLB, GWLB)
+
+8. Cost Optimization
+  . Compute savings plans
+  . Spot strategies
+  . S3 storage classes & lifecycle
+  . Cost Explorer analysis
+  . Rightsizing + auto-scheduling
+
+
+9. Data Engineering Basics (Very Important Now)
+  . Glue, Athena, EMR basics
+  . S3 data lake patterns
+  . Lambda + Kinesis pipelines
+
+10. Soft Skills
+  . Architecture decision-making
+  . Production incident handling
+  . Clear documentation and diagrams
+  . Reviewing infra/app code
+  
